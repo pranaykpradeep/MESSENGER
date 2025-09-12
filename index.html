@@ -107,22 +107,6 @@ Decode the fragments. Follow the trail. Rebuild the link.<br><br>
 
 
 
-      // Send to Telegram
-      const message = 📡 Techpocalypse Entry\n🕒 ${timestamp}\n👤 Name: ${name}\n👥 Group: ${group};
-      fetch(https://api.telegram.org/bot${telegramToken}/sendMessage, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: telegramChatID,
-          text: message
-        })
-      });
-
-          // Send to Google Sheets
-      fetch(sheetURL, {
-        method: 'POST',
-        body: formData
-      });
     
       // Redirect after short delay
       setTimeout(() => {
