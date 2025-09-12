@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Techpocalypse: The Last Signal</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: radial-gradient(#222, #000);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1em;
+      margin-bottom: 30px;
+      color: #cccccc;
+    }
+
+    form {
+      background-color: #111;
+      padding: 20px;
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      box-shadow: 0 0 20px #00ffcc33;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background-color: #222;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #00ffaa;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.8em;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+ <h1> "W..H..Y...?"</h1>
+
+<p>
+  WHY-MANS Last trasmission , A repeating pulse. A question etched into the static.<br>
+  The last transmission from a 
+world that petrified.<br>
+ 
+Decode the fragments. Follow the trail. Rebuild the link.<br><br>
+  Enter your credentials. The hunt begins now.
+</p>
+  <form id="huntForm">
+    <input type="text" name="name" required placeholder="Participant Name">
+    <input type="text" name="group" required placeholder="Group Name">
+    <button type="submit">Transmit Signal</button>
+  </form>
+
+  <div class="footer">IEEE Survival Protocol v1.0</div>
+
+  <script>
+    const sheetURL = "YOUR_GOOGLE_SCRIPT_URL";
+    const telegramToken = "7719027084:AAH6AA5L0ggBJE2Nl_j4zFtSo3QOsTiEGUw
+";
+    const telegramChatID = "1683089455";
+    const redirectURL = "https://frequency-beige.vercel.app/";
+
+    document.getElementById('huntForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const name = formData.get("name");
+      const group = formData.get("group");
+      const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+      // Send to Google Sheets
+      fetch(sheetURL, {
+        method: 'POST',
+        body: formData
+      });
+
+      // Send to Telegram
+      const message = 📡 Techpocalypse Entry\n🕒 ${timestamp}\n👤 Name: ${name}\n👥 Group: ${group};
+      fetch(https://api.telegram.org/bot${telegramToken}/sendMessage, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: telegramChatID,
+          text: message
+        })
+      });
+
+      // Redirect after short delay
+      setTimeout(() => {
+        window.location.href = redirectURL;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
