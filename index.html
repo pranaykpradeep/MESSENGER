@@ -74,45 +74,35 @@
   </style>
 </head>
 <body>
- <h1> "W..H..Y...?"</h1>
+  <h1>📡 SIGNAL: "WHY...MAN?"</h1>
+  <p>
+    [Last Transmission Fragment]<br>
+    <em>"Why...man...?"</em><br>
+    A repeating pulse. A question etched into static. The final echo of a world undone.<br><br>
+    IEEE protocol remains buried beneath the ruins. The last signal flickers.<br>
+    You are the final engineers. Trace the transmission. Decode the fragments. Restore the link.<br><br>
+    Enter your credentials to initiate the hunt. Time is running out.
+  </p>
 
-<p>
-  WHY-MANS Last trasmission , A repeating pulse. A question etched into the static.<br>
-  The last transmission from a 
-world that petrified.<br>
- 
-Decode the fragments. Follow the trail. Rebuild the link.<br><br>
-  Enter your credentials. The hunt begins now.
-</p>
-  <form id="huntForm">
-    <input type="text" name="name" required placeholder="Participant Name">
-    <input type="text" name="group" required placeholder="Group Name">
+  <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    <input type="text" name="entry.1234567890" required placeholder="Participant Name">
+    <input type="text" name="entry.0987654321" required placeholder="Group Name">
     <button type="submit">Transmit Signal</button>
   </form>
 
-  <div class="footer">IEEE Survival Protocol v1.0</div>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <script>
-    const sheetURL = "https://script.google.com/macros/s/AKfycbyjUxpbUJRi84HAzLR1oPf0UakYtB93EF8zIIBEnvBSGI02AUAZ0xddGnim5_u0dZk-/exec";
-    const telegramToken = "7719027084:AAH6AA5L0ggBJE2Nl_j4zFtSo3QOsTiEGUw";
-    const telegramChatID = "1683089455";
-    const redirectURL = "https://frequency-beige.vercel.app/";
-
-    document.getElementById('huntForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const name = formData.get("name");
-      const group = formData.get("group");
-      const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-
-
-
-    
-      // Redirect after short delay
+    let submitted = false;
+    document.querySelector("form").addEventListener("submit", function() {
       setTimeout(() => {
-        window.location.href = redirectURL;
+        if (submitted) {
+          window.location.href = "https://yourhuntdomain.com/start";
+        }
       }, 1000);
     });
   </script>
+
+  <div class="footer">IEEE Survival Protocol v1.0</div>
 </body>
 </html>
